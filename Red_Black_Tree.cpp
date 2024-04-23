@@ -28,6 +28,13 @@ class RedBlackTree{
 				print(n->right,label+1,1);
 			}
 		}
+		void helper(node *r){
+			if(r!=NULL){
+				helper(r->left);
+				helper(r->right);
+				delete r;
+			}
+		}
 	public:
 		RedBlackTree(){
 			root = NULL;
@@ -241,6 +248,10 @@ class RedBlackTree{
 		void display(){
 			this->print(this->root,0,0);
 			cout<<endl;
+		}
+		
+		~RedBlackTree(){
+			helper(root);
 		}
 };
 
